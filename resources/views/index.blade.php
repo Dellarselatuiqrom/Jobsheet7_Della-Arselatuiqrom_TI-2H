@@ -45,4 +45,10 @@ div class="alert alert-success">
 </table>
 @endsection
 
+<p>search :</p>
+<form action="search" method="GET">
+	<input type="text" name="search" placeholder="search student" value="{{ old('search') }}">
+	<input type="submit" value="search">
+</form>
+
 </html>
