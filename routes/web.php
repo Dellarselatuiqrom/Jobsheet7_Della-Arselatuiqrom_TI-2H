@@ -15,9 +15,5 @@ use Illuminate\Http\Request;
 |
 */
 Route::resource('student', StudentController::class);
-Route::get('/', function () {return view('index');
+Route::get('/student', function () {return view('index');
 });
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
