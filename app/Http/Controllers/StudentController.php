@@ -76,3 +76,5 @@ return redirect()->route('student.index')
 -> with('success', 'Student Successfully Deleted');
 }
 };
+
+

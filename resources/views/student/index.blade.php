@@ -10,6 +10,13 @@
 </div>
 </div>
 <div class="float-left my-2">
+<p> Search Student :</p>
+<form action="/student/search" method="GET">
+    <input type="text" name="search" value="{{ value('search') }}">
+    <input type="submit" value="Search">
+</form>
+<tr>
+<tr>
 </div>
 </div>
 </div>
@@ -35,7 +42,7 @@
 <td>{{ $mhs ->class }}</td>
 <td>{{ $mhs ->major }}</td>
 <td>{{ $mhs ->address }}</td>
-<td>{{ $mhs ->date of birth }}</td>
+<td>{{ $mhs ->dateofbirth }}</td>
 <td>
 <form action="{{ route('student.destroy',['student'=>$mhs->nim]) }}" method="POST">
 <a class="btn btn-info" href="{{ route('student.show',$mhs->nim) }}">Show</a>

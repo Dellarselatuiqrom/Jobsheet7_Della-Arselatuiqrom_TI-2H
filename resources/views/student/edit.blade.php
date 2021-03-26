@@ -40,11 +40,11 @@ Edit Student Data
 </div>
 <div class="form-group">
 <label form="Address">Address</label>
-<input type="Address" name="Address" class="form-control" id="Address" value="{{ $Student->Address }}" aria-describedby="Address" >
+<input type="address" name="address" class="form-control" id="address" value="{{ $Student->address }}" aria-describedby="address" >
 </div>
 <div class="form-group">
 <label form="Date of Birth">Date of Birth</label>
-<input type="Date of Birth" name="Date of Birth" class="form-control" id="Date of Birth" value="{{ $Student->Date of Birth }}" aria-describedby="Date of Birth" >
+<input type="dateofbirth" name="dateofbirth" class="form-control" id="dateofbirth" value="{{ $Student->dateofbirth}}" aria-describedby="dateofbirth" >
 </div>
 <button type="submit" class="btn btn-primary">Submit</button>
 </form>
