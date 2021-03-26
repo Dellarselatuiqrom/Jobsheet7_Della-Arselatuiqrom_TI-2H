@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 @extends('student.layout')
 @section('content')
 <div class="row">
@@ -11,7 +13,7 @@
 </div>
 </div>
 @if ($message = Session::get('success'))
-<div class="alert alert-success">
+div class="alert alert-success">
 <p>{{ $message }}</p>
 </div>
 @endif
@@ -42,3 +44,5 @@
 @endforeach
 </table>
 @endsection
+
+</html>
