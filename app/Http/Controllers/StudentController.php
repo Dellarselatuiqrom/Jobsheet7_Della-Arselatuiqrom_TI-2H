@@ -30,6 +30,8 @@ $request->validate([
 'Name' => 'required',
 'Class' => 'required',
 'Major' => 'required',
+'Address' => 'required',
+'Date of Birth' => 'required',
 ]);
 // eloquent function to add data
 Student::create($request->all());
@@ -57,6 +59,8 @@ $request->validate([
 'Name' => 'required',
 'Class' => 'required',
 'Major' => 'required',
+'Address' => 'required',
+'Date of Birth' => 'required',
 ]);
 //Eloquent function to update the data
 Student::find($Nim)->update($request->all());

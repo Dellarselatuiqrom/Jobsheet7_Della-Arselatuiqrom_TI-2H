@@ -19,5 +19,7 @@ protected $fillable = [
 'Name',
 'Class',
 'Major',
+'Address',
+'Birth of Date',
 ];
 };

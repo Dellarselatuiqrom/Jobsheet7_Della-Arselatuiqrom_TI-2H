@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 @extends('student.layout')
 @section('content')
 <div class="row">
@@ -11,9 +9,12 @@
 <a class="btn btn-success" href="{{ route('student.create') }}"> Input Student Data</a>
 </div>
 </div>
+<div class="float-left my-2">
+</div>
+</div>
 </div>
 @if ($message = Session::get('success'))
-div class="alert alert-success">
+@div class="alert alert-success">
 <p>{{ $message }}</p>
 </div>
 @endif
@@ -23,6 +24,8 @@ div class="alert alert-success">
 <th>Name</th>
 <th>Class</th>
 <th>Major</th>
+<th>Address</th>
+<th>Date of Birth</th>
 <th width="280px">Action</th>
 </tr>
 @foreach ($student as $mhs)
@@ -31,6 +34,8 @@ div class="alert alert-success">
 <td>{{ $mhs ->name }}</td>
 <td>{{ $mhs ->class }}</td>
 <td>{{ $mhs ->major }}</td>
+<td>{{ $mhs ->address }}</td>
+<td>{{ $mhs ->date of birth }}</td>
 <td>
 <form action="{{ route('student.destroy',['student'=>$mhs->nim]) }}" method="POST">
 <a class="btn btn-info" href="{{ route('student.show',$mhs->nim) }}">Show</a>
@@ -44,11 +49,3 @@ div class="alert alert-success">
 @endforeach
 </table>
 @endsection
-
-<p>search :</p>
-<form action="search" method="GET">
-	<input type="text" name="search" placeholder="search student" value="{{ old('search') }}">
-	<input type="submit" value="search">
-</form>
-
-</html>
