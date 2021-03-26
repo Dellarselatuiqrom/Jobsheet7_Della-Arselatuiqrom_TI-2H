@@ -15,6 +15,5 @@ use Illuminate\Http\Request;
 |
 */
 Route::resource('student', StudentController::class);
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function () {return view('index');
 });
