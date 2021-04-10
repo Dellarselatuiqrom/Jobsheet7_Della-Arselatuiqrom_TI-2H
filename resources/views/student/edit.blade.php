@@ -22,6 +22,12 @@ Edit Student Data
 <form method="post" action="{{ route('student.update', $Student->nim) }}" id="myForm">
 @csrf
 @method('PUT')
+<label for="Class">Class</label>
+<select name="Class" class="form-control">
+    @foreach($class as $cls)
+        <option value="{{$cls->id}}" {{ $student->class_id == $cls->id ? 'selected' : '' }}>{{$cls->name_class}}</option>
+    @endforeach
+</select>
 <div class="form-group">
 <label form="Nim">Nim</label>
 <input type="text" name="Nim" class="form-control" id="Nim" value="{{ $Student->nim }}" aria-describedby="Nim" >

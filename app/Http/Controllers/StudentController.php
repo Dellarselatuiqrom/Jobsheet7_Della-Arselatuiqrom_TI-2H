@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use DB;
+use App\Models\ClassModel;
 class StudentController extends Controller
 {
 /**
@@ -12,15 +13,14 @@ class StudentController extends Controller
 */
 public function index()
 {
-// the eloquent function to displays data
-$student = $student = DB::table('student')->get(); // Mengambil semua isi tabel
-//$posts = Student::orderBy('Nim', 'desc')->paginate(6);
-return view('student.index', compact('student'));
-//with('i', (request()->input('page', 1) - 1) * 5);
+    $student = Student::with('class')->get();
+    $paginate = Student::orderBy('id_student', 'asc')->paginate(3);
+    return view('student.index', ['student' => $student, 'paginate' =>$paginate]);
 }
 public function create()
 {
-return view('student.create');
+$class = ClassModel::all(); //get data from class table
+return view('student.create',['class' => $class]);
 }
 public function store(Request $request)
 {
@@ -30,8 +30,6 @@ $request->validate([
 'Name' => 'required',
 'Class' => 'required',
 'Major' => 'required',
-'Address' => 'required',
-'Date of Birth' => 'required',
 ]);
 // eloquent function to add data
 Student::create($request->all());
@@ -42,14 +40,15 @@ return redirect()->route('student.index')
 public function show($Nim)
 {
 // displays detailed data by finding / by Student Nim
-$Student = Student::find($Nim);
-return view('student.detail', compact('Student'));
+$student = Student::with('class')->where('nim', $Nim)->first();
+return view('student.detail', ['Student' => $student]);
 }
 public function edit($Nim)
 {
 // displays detail data by finding based on Student Nim for editing
 $Student = DB::table('student')->where('nim', $Nim)->first();;
-return view('student.edit', compact('Student'));
+$class = Class::all();
+return view('student.edit', compact('Student','Class'));
 }
 public function update(Request $request, $Nim)
 {
@@ -59,14 +58,22 @@ $request->validate([
 'Name' => 'required',
 'Class' => 'required',
 'Major' => 'required',
-'Address' => 'required',
-'Date of Birth' => 'required',
 ]);
-//Eloquent function to update the data
-Student::find($Nim)->update($request->all());
-//if the data successfully updated, will return to main page
+
+$student = new Mahasiswa;
+$student->nim = $request->get('nim');
+$student->name = $request->get('name');
+$student->major = $request->get('major');
+$student->save();
+
+$class = new ClassModel;
+$class->id = $request->get('Class');
+
+$student->class()->associate($class);
+$student->save();
+
 return redirect()->route('student.index')
-->with('success', 'Student Successfully Updated');
+    ->with('success', 'Student successfully added');
 }
 public function destroy( $Nim)
 {

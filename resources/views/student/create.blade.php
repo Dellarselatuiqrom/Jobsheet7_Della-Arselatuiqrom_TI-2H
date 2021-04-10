@@ -21,6 +21,14 @@ Add Student
 @endif
 <form method="post" action="{{ route('student.store') }}" id="myForm">
 @csrf
+</div class="form-group">
+    <label for="Class">Class</label>
+    <select name="Class" class="form-control">
+        @foreach($class as $kls)
+            <option value="{{$kls->id}}">{{$kls->class_name}}</option>
+            @endforeach
+    </select>
+</div>
 <div class="form-group">
 <label for="Nim">Nim</label>
 <input type="text" name="Nim" class="form-control" id="Nim" aria-describedby="Nim" >
