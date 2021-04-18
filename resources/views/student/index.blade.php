@@ -49,6 +49,28 @@
 </form>
 </td>
 </tr>
+@extends('layouts.app')
+@section('content')
+@if ($message = Session::get('success'))
+<div class="alert alert-success">
+<p>{{ $message }}</p>
+</div>
+@endif
+<table class="table table-bordered" style="width:95%;margin: 0
+auto;">
+<tr>
+<th>Student_Image</th>
+</tr>
+@foreach ($student as $student)
+<tr>
+<td><img width="150px"
+src="{{asset('storage/'.$student->student_image)}}"></td>
+</tr>
+<dic class="row">
+    <div style="margin:0px 0px 0px 70px;">
+        <a class="btn btn=success" href="{{ route('print_pdf') }}"> Print PDF</a>
+    </div>
+</div><br/>
 @endforeach
 </table>
 @endsection

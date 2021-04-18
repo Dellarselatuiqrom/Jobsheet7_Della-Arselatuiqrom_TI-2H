@@ -82,6 +82,11 @@ Student::find($Nim)->delete();
 return redirect()->route('student.index')
 -> with('success', 'Student Successfully Deleted');
 }
+public function print_pdf(){
+    $student = Student::all();
+    $pdf = PDF::loadview('student.articles_pdf', ['student'=>$student]);
+    return $pdf->stream();
+}
 };
 
 
